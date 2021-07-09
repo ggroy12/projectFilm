@@ -63,7 +63,7 @@ if(isset($_POST['upBtn'])) {
         </div>
         <form action="" method="POST">
             <input type="text" name="filmName" placeholder="Название фильма" class="form-item" required>
-            <input type="text" name="releaseYear" placeholder="Год выхода" class="form-item" required>
+            <input type="text" name="releaseYear" placeholder="Год выхода" class="form-item" pattern="[0-9]{1,10}" required>
             <input type="text" name="format" placeholder="Формат фильма" class="form-item" required>
             <textarea name="stars" cols="55px" rows="5px" class="form-item" required
                       placeholder="Перечень актеров игравших фильме (перечислять через кому ',')"

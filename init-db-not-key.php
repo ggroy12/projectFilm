@@ -22,6 +22,16 @@ $pdoDatabase->exec('CREATE DATABASE IF NOT EXISTS ' . $databaseName);
 $pdo = new PDO('mysql:host=localhost;dbname='.$databaseName, $databaseUser, $databasePassword);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+$pdo->exec('DROP TABLE IF EXISTS mediator;');
+$pdo->exec("CREATE TABLE `mediator` (
+ `mediator_id` INT (11) NOT NULL AUTO_INCREMENT,
+ `film_id` INT (11) NOT NULL,
+ `actor_id` INT (11) NOT NULL,
+ PRIMARY KEY (`mediator_id`)/*,
+ FOREIGN KEY (film_id) REFERENCES film (film_id),
+ FOREIGN KEY (actor_id) REFERENCES actor (actor_id)*/
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
+
 $pdo->exec('DROP TABLE IF EXISTS film;');
 $pdo->exec("CREATE TABLE `film` (
  `film_id` INT (11) NOT NULL AUTO_INCREMENT,
@@ -37,16 +47,6 @@ $pdo->exec("CREATE TABLE `actor` (
  `actor_name` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
  `surname` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
  PRIMARY KEY (`actor_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
-
-$pdo->exec('DROP TABLE IF EXISTS mediator;');
-$pdo->exec("CREATE TABLE `mediator` (
- `mediator_id` INT (11) NOT NULL AUTO_INCREMENT,
- `film_id` INT (11) NOT NULL,
- `actor_id` INT (11) NOT NULL,
- PRIMARY KEY (`mediator_id`),
- FOREIGN KEY (film_id) REFERENCES film (film_id),
- FOREIGN KEY (actor_id) REFERENCES actor (actor_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
 
 echo 'Ding!';
