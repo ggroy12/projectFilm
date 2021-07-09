@@ -9,5 +9,7 @@ interface ActorStorageInterface
      */
     public function getAllActors(): array;
 
-    public function getSingleActor(int $id): ?Actor;
+    public function findActorId(int $id): ?Actor;
+
+    public function findNameActor(string $name, string $surname): ?Actor;
 }

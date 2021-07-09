@@ -8,29 +8,20 @@ class Film
 
     private string $name;
 
-    private int $release;
+    private int $dateRelease;
 
     private string $format;
-
-    private int $actorId;
-
-    public function __construct(
-        int $filmId,
-        string $name,
-        int $release,
-        string $format,
-        int $actorId,
-    ) {
-        $this->filmId = $filmId;
-        $this->name = $name;
-        $this->release = $release;
-        $this->format = $format;
-        $this->actorId = $actorId;
-    }
 
     public function getFilmId(): int
     {
         return $this->filmId;
+    }
+
+    public function setFilmId(?int $filmId): self
+    {
+        $this->filmId = $filmId;
+
+        return $this;
     }
 
     public function getName(): string
@@ -38,9 +29,23 @@ class Film
         return $this->name;
     }
 
-    public function getRelease(): int
+    public function setName(?string $name): self
     {
-        return $this->release;
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getDateRelease(): int
+    {
+        return $this->dateRelease;
+    }
+
+    public function setDateRelease(?int $dateRelease): self
+    {
+        $this->dateRelease = $dateRelease;
+
+        return $this;
     }
 
     public function getFormat(): string
@@ -48,8 +53,10 @@ class Film
         return $this->format;
     }
 
-    public function getActorId(): int
+    public function setFormat(?string $format): self
     {
-        return $this->actorId;
+        $this->format = $format;
+
+        return $this;
     }
 }

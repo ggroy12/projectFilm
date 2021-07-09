@@ -9,5 +9,7 @@ interface FilmStorageInterface
      */
     public function getAllFilms(): array;
 
-    public function getSingleFilm(int $id): ?Film;
+    public function findFilmId(int $id): ?Film;
+
+    public function findFilmName(string $name): ?Film;
 }

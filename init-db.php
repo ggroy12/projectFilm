@@ -25,17 +25,16 @@ $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $pdo->exec('DROP TABLE IF EXISTS film;');
 $pdo->exec("CREATE TABLE `film` (
  `film_id` INT (11) NOT NULL AUTO_INCREMENT,
- `name` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
- `release` DATE NOT NULL,
- `format` CHAR (15) COLLATE utf8mb4_unicode_ci NOT NULL,
- `actor_id` INT (11) NOT NULL,
+ `film_name` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `date_release` INT(11) NOT NULL,
+ `format` VARCHAR(15) COLLATE utf8mb4_unicode_ci NOT NULL,
  PRIMARY KEY (`film_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
 
 $pdo->exec('DROP TABLE IF EXISTS actor;');
 $pdo->exec("CREATE TABLE `actor` (
  `actor_id` INT (11) NOT NULL AUTO_INCREMENT,
- `name` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
+ `actor_name` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
  `surname` VARCHAR (255) COLLATE utf8mb4_unicode_ci NOT NULL,
  PRIMARY KEY (`actor_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci");
