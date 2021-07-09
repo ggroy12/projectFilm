@@ -30,12 +30,15 @@ if(isset($_POST['findBtn'])) {
         }
     } elseif ($_POST['list'] == 'actor') {
         $nameAndSurnameArr = explode(' ', $_POST['inputName']);
-        $actorObject = $actorLoader->findNameActor($nameAndSurnameArr['0'], $nameAndSurnameArr['1']);
-        if (isset($actorObject)) {
-            $actorId = $actorObject->getActorId();
-            foreach ($mediators as $mediator) {
-                if ($mediator->getActorId() === $actorId) {
-                    $filmsArr[] = $filmStorage->findFilmId($mediator->getFilmId());
+
+        if (!empty($nameAndSurnameArr['0']) && !empty($nameAndSurnameArr['1'])) {
+            $actorObject = $actorLoader->findNameActor($nameAndSurnameArr['0'], $nameAndSurnameArr['1']);
+            if (isset($actorObject)) {
+                $actorId = $actorObject->getActorId();
+                foreach ($mediators as $mediator) {
+                    if ($mediator->getActorId() === $actorId) {
+                        $filmsArr[] = $filmStorage->findFilmId($mediator->getFilmId());
+                    }
                 }
             }
         }
