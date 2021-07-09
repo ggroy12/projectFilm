@@ -22,7 +22,12 @@ $addOneRecordsToDb = new AddOneRecordToDb($filmWrite, $actorWrite, $mediatorWrit
 if(isset($_POST['findBtn'])) {
     $filmName = $_POST['inputName'];
     if ($_POST['list'] == 'film') {
-        $filmsArr[] = $filmStorage->findFilmName($_POST['inputName']);
+        $filmObject = $filmStorage->findFilmName($_POST['inputName']);
+        if (!empty($filmObject)){
+            $filmsArr[] = $filmObject;
+        } else {
+            $filmsArr = null;
+        }
     } elseif ($_POST['list'] == 'actor') {
         $nameAndSurnameArr = explode(' ', $_POST['inputName']);
         $actorObject = $actorLoader->findNameActor($nameAndSurnameArr['0'], $nameAndSurnameArr['1']);
